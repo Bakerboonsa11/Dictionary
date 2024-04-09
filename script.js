@@ -11,5 +11,19 @@ btn.addEventListener("click", () => {
     })
     .then((data) => {
       console.log(data);
+      document.querySelector(".word").textContent = word;
+      document.querySelector(
+        ".first_leteral"
+      ).innerHTML = `<p class="somthing1">${data[0].meanings[0].partOfSpeech}</p>
+      
+      <p class="somthing2">${data[0].phonetic}</p>
+            `;
+      document.querySelector(".meaning").innerHTML = ` <p class="meaning">
+      ${data[0].meanings[0].definitions[0].definition}
+    </p>`;
+
+      document.querySelector(".example").innerHTML = ` <p class="example">
+           ${data[0].meanings[0].definitions[0].example || ""}
+      </p>`;
     });
 });

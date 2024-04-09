@@ -67,7 +67,7 @@ ion-icon {
 .first_leteral {
   font-size: 2rem;
   display: flex;
-  gap: 0.2rem;
+  gap: 2rem;
   padding: 2rem;
   font-weight: 900;
   color: gray;
