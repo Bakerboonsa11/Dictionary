@@ -1,7 +1,8 @@
 const url = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 const result = document.querySelector(".result");
-console.log(result);
+// console.log(result);
 const btn = document.querySelector(".searrch_btn");
+const sound = document.querySelector(".sound");
 
 btn.addEventListener("click", () => {
   const word = document.querySelector(".search_input").value;
@@ -22,8 +23,21 @@ btn.addEventListener("click", () => {
       ${data[0].meanings[0].definitions[0].definition}
     </p>`;
 
-      document.querySelector(".example").innerHTML = ` <p class="example">
+      document.querySelector(".example").innerHTML = ` <p>
            ${data[0].meanings[0].definitions[0].example || ""}
       </p>`;
+
+      sound.setAttribute("src", data[0].phonetics[1].audio);
+
+      console.log(sound);
+    })
+    .catch(() => {
+      const container = document.querySelector(".meaning_container");
+      container.innerHTML = "invalid word";
+      container.style.textAlign = "center";
     });
 });
+
+function playsound() {
+  sound.play();
+}
